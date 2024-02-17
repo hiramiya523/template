@@ -1,0 +1,18 @@
+services:
+  pgsql:
+    restart: always
+    build:
+      context: ./docker/db/postgresql
+      args:
+        - UID=1000
+        - GID=1000
+    environment:
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "pass"
+    ports:
+      - 5432:5432
+      # env_file:
+      #   - .env-dev
+
+
+      # envでバージョン変えるとかしたいよんね
