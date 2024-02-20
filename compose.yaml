@@ -48,6 +48,9 @@ services:
       args:
         - UID=1000
         - GID=1000
+    volumes:
+      - ./docker/db/postgresql/initdb:/docker-entrypoint-initdb.d
+      # - ./data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: "user"
       POSTGRES_PASSWORD: "pass"
