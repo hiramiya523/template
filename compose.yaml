@@ -22,8 +22,13 @@ services:
         - GID=${WEB_USER_GID}
     tty: true
     # user: ${WEB_USER_UID}:${WEB_USER_GID}
+    # volumes:
+    # TODO /静的環境/フロントのビルドパス
+    # - ./static/webroot:/var/www/html
     environment:
       TZ: 'Asia/Tokyo'
+      # NGINX_HOST: foobar.com
+      NGINX_PORT: 80
     ports:
       - ${BIND_IP:-127.0.0.1}:${HTTP_PORT}:80
       - ${BIND_IP:-127.0.0.1}:${HTTPS_PORT}:443
@@ -48,6 +53,9 @@ services:
       args:
         - UID=1000
         - GID=1000
+    volumes:
+      - ./docker/db/postgresql/initdb:/docker-entrypoint-initdb.d
+      # - ./data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: "user"
       POSTGRES_PASSWORD: "pass"
