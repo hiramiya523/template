@@ -53,8 +53,20 @@ services:
       POSTGRES_PASSWORD: "pass"
     ports:
       - 5432:5432
+    healthcheck:
+      test: [ 'CMD', 'pg_isready' ]
+      interval: 5s
+      timeout: 2s
+      retries: 20
       # env_file:
       #   - .env-dev
 
+      #  maria:
+      #   healthcheck:
+      #     test: ['CMD', '/usr/local/bin/healthcheck.sh', '--connect']
+      #     interval: 5s
+      #     timeout: 2s
+      #     retries: 20
 
-      # envでバージョン変えるとかしたいよんね
+
+      # TODO envでバージョン変えるとかしたいよんね
