@@ -42,6 +42,29 @@ erDiagram
     int id PK
   }
 
+  m_project_category {
+    int id PK
+
+  }
+  
+  m_status {
+    int id PK
+
+  }
+
+   sds {
+    int id PK
+
+  }
+   efg {
+    int id PK
+
+  }
+   br {
+    int id PK
+
+  }
+
   m_project_user {
     int i_project_cd PK
     int i_user_cd PK
